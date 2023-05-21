@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Rasa Chatbot</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            // Event listener for form submission
+            $("form").submit(function(event) {
+                event.preventDefault();
+
+                // Get user input
+                var userInput = $("#user-input").val();
+
+                // Send user input to the Flask backend
+                $.ajax({
+                    url: "/chat",
+                    type: "POST",
+                    contentType: "application/json",
+                    data: JSON.stringify({"message": userInput}),
+                    success: function(response) {
+                        // Display chatbot response
+                        $("#chat-container").append("<p><strong>User:</strong> " + userInput + "</p>");
+                        $("#chat-container").append("<p><strong>Chatbot:</strong> " + response.response + "</p>");
+
+                        // Clear user input
+                        $("#user-input").val("");
+                    }
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+    <h1>Rasa Chatbot</h1>
+
+    <div id="chat-container">
+        <!-- Chat messages will be displayed here -->
+    </div>
+
+    <form>
+        <input type="text" id="user-input" placeholder="Enter your message">
+        <input type="submit" value="Send">
+    </form>
+</body>
+</html>
