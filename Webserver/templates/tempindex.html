@@ -1,13 +1,139 @@
+<!DOCTYPE html>
 <html>
-  <head>
-    <title>CHATBOT</title>
-  </head>
-  <body>
-    <h1>CHATBOT</h1>
-    <form>
-      <label for="text">You:</label><br />
-      <input type="text" id="text" name="text" /><br />
-      {{val}}
-    </form>
-  </body>
+<head>
+  <title>FAQBOT</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    .chat-container {
+      width: 100%;
+      height: 100%;
+      max-height: calc(100vh - 60px);
+      overflow-y: scroll;
+      padding: 20px;
+    }
+
+    .chat-message {
+      margin-bottom: 10px;
+    }
+
+    .user-message {
+      background-color: #ddd;
+      text-align: right;
+    }
+
+    .bot-message {
+      background-color: #f5f5f5;
+    }
+
+    .bot-message img,
+    .user-message img {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      margin-right: 5px;
+      vertical-align: middle;
+    }
+
+    .user-message img {
+      margin-left: 5px;
+      margin-right: 0;
+    }
+
+    .input-container {
+      display: flex;
+      align-items: center;
+      padding: 10px;
+    }
+
+    .input-container input {
+      flex-grow: 1;
+      margin-right: 10px;
+    }
+
+    @media screen and (min-width: 600px) {
+      .chat-container {
+        width: 400px;
+        margin: 0 auto;
+      }
+    }
+  </style>
+  <!-- Include Animate.css library -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+</head>
+<body>
+  <div class="chat-container">
+    <div class="chat-message bot-message">
+      <img src="bot-profile-pic.png">
+      <p class="animate__animated animate__fadeIn">Welcome! How can I assist you today?</p>
+    </div>
+    <div class="chat-message user-message">
+      <img src="user-profile-pic.png">
+      <p class="animate__animated animate__fadeIn">Hello! I have a question.</p>
+    </div>
+    <!-- Add more chat messages here -->
+  </div>
+  <div class="input-container">
+    <input type="text" id="user-input" placeholder="Type your message..." onkeydown="handleKeyDown(event)" />
+    <button onclick="sendMessage()">Send</button>
+  </div>
+
+  <!-- Include Lottie library -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.7.8/lottie.min.js"></script>
+  <script>
+    function handleKeyDown(event) {
+      if (event.keyCode === 13) {
+        sendMessage();
+      }
+    }
+
+    function sendMessage() {
+      var userInput = document.getElementById('user-input');
+      var messageContainer = document.querySelector('.chat-container');
+      var userMessage = document.createElement('div');
+      userMessage.classList.add('chat-message', 'user-message');
+      userMessage.innerHTML = `
+        <img src="user-profile-pic.png">
+        <p class="animate__animated animate__fadeIn">${userInput.value}</p>
+      `;
+      messageContainer.appendChild(userMessage);
+
+      // Send user input to the Flask backend for processing
+      fetch('/process', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ input: userInput.value })
+      })
+      .then(response => response.json())
+      .then(data => {
+        var botMessage = document.createElement('div');
+        botMessage.classList.add('chat-message', 'bot-message');
+        if (data.type === 'text') {
+          botMessage.innerHTML = `
+            <img src="bot-profile-pic.png">
+            <p class="animate__animated animate__fadeIn">${data.response}</p>
+          `;
+        } else if (data.type === 'image') {
+          botMessage.innerHTML = `
+            <img src="bot-profile-pic.png">
+            <img src="${data.response}" class="animate__animated animate__fadeIn">
+          `;
+        }
+        messageContainer.appendChild(botMessage);
+        userInput.value = '';
+        messageContainer.scrollTop = messageContainer.scrollHeight;
+      })
+      .catch(error => {
+        console.error('Error:', error);
+      });
+    }
+  </script>
+</body>
 </html>
