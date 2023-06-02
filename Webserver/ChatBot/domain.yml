@@ -8,6 +8,15 @@ intents:
   - mood_great
   - mood_unhappy
   - bot_challenge
+  - admissions
+  - courses
+  - financial_aid
+  - campus_facilities
+  - academic_calendar
+  - international_students
+  - housing
+  - student_life
+  - career_services
 
 responses:
   utter_greet:
@@ -28,6 +37,35 @@ responses:
 
   utter_iamabot:
   - text: "I am a bot, powered by Rasa."
+
+  utter_admissions:
+  - text: "To apply for admission, you need to fill out the online application form and submit the required documents. Please visit our admissions page for more information."
+
+  utter_courses:
+  - text: "Our university offers a wide range of courses across various disciplines. You can find detailed information about our courses on our website."
+
+  utter_financial_aid:
+  - text: "To apply for financial aid, you need to fill out the financial aid application form and submit the required documents. For more information, you can visit our financial aid page."
+
+  utter_campus_facilities:
+  - text: "The library is located in Building A, on the second floor. Our sports facilities include a gymnasium, tennis courts, and a soccer field. The student center is open from 9 am to 5 pm, Monday to Friday."
+
+  utter_academic_calendar:
+  - text: "The semester usually starts in September. The registration deadline for the upcoming semester is August 15. You can find the complete academic calendar on our website."
+
+  utter_international_students:
+  - text: "Yes, we accept international students. The English language requirement for international students is a minimum TOEFL score of 80 or IELTS score of 6.5. We also offer scholarships specifically for international students."
+
+  utter_housing:
+  - text: "To apply for on-campus housing, you need to complete the housing application form by the specified deadline. Off-campus housing options can be found on our website. The housing fees vary depending on the room type."
+
+  utter_student_life:
+  - text: "We have a variety of student clubs and organizations catering to different interests. Our recreational activities include sports teams, fitness classes, and arts clubs. Student support services are available at the Student Services Center."
+
+  utter_career_services:
+  - text: "Our university provides career counseling services to help you with career exploration, resume writing, and interview preparation. Job placement assistance is also available through our career services department. We frequently organize internship opportunities and networking events."
+
+
 
 session_config:
   session_expiration_time: 60

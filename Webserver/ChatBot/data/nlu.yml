@@ -89,3 +89,68 @@ nlu:
     - are you a human?
     - am I talking to a bot?
     - am I talking to a human?
+- intent: admissions
+  examples: |
+    - How can I apply for admission?
+    - What are the admission requirements?
+
+- intent: financial_aid
+  examples: |
+    - How do I apply for financial aid?
+    - What types of scholarships are available?
+    - Can I get a student loan?
+    - How can I qualify for a tuition waiver?
+    - Are there any grants for low-income students?
+
+- intent: courses
+  examples: |
+    - What courses does the university offer?
+    - Tell me about the computer science program.
+
+- intent: campus_facilities
+  examples: |
+    - Where can I find the library on campus?
+    - Are there any sports facilities available for students?
+    - What are the opening hours of the student center?
+    - Where is the nearest parking lot?
+    - Is there a cafeteria on campus?
+
+- intent: academic_calendar
+  examples: |
+    - When does the semester start?
+    - When is the registration deadline?
+    - What are the important dates for the academic year?
+    - Can you provide the academic calendar for next year?
+    - When are the midterm exams scheduled?
+
+- intent: international_students
+  examples: |
+    - Do you accept international students?
+    - What are the English language requirements for international students?
+    - Are there any specific scholarships for international students?
+    - How can international students apply for a student visa?
+    - Are there any orientation programs for international students?
+
+- intent: housing
+  examples: |
+    - How can I apply for on-campus housing?
+    - Are there any off-campus housing options recommended by the university?
+    - What are the housing fees?
+    - Can I request a specific roommate for on-campus housing?
+    - Are pets allowed in the dorms?
+
+- intent: student_life
+  examples: |
+    - Are there any student clubs or organizations on campus?
+    - What recreational activities are available for students?
+    - Tell me more about student support services.
+    - How can I get involved in student government?
+    - Are there any volunteer opportunities for students?
+
+- intent: career_services
+  examples: |
+    - Does the university provide career counseling services?
+    - How can I access job placement assistance?
+    - Are there any internship opportunities for students?
+    - Can I get help with writing my resume?
+    - Are there any networking events organized by the university?

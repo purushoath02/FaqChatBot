@@ -28,3 +28,49 @@ stories:
   - action: utter_did_that_help
   - intent: deny
   - action: utter_goodbye
+
+- story: admissions
+  steps:
+  - intent: admissions
+  - action: utter_admissions
+
+- story: courses
+  steps:
+  - intent: courses
+  - action: utter_courses
+
+- story: financial_aid
+  steps:
+  - intent: financial_aid
+  - action: utter_financial_aid
+
+- story: campus_facilities
+  steps:
+  - intent: campus_facilities
+  - action: utter_campus_facilities
+
+- story: academic_calendar
+  steps:
+  - intent: academic_calendar
+  - action: utter_academic_calendar
+
+- story: international_students
+  steps:
+  - intent: international_students
+  - action: utter_international_students
+
+- story: housing
+  steps:
+  - intent: housing
+  - action: utter_housing
+
+- story: student_life
+  steps:
+  - intent: student_life
+  - action: utter_student_life
+
+- story: career_services
+  steps:
+  - intent: career_services
+  - action: utter_career_services
+
